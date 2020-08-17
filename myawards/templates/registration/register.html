@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+
+    {% if form.errors %}
+    <p> Some Information Might be Incorrect </p>
+    {% endif %}
+    <div class="content-section">
+        <div class="panel-body">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Join Today</legend>
+                    {% bootstrap_form form %}
+                </fieldset>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-outline-info btn-sm" value="Sign Up">
+                </div>
+                <input type="hidden" name="next" value="{{next}}">
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">Already have an account? <a class="ml-2" href="{% url 'login'%}">Sign
+                        In</a></small>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

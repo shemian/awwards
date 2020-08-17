@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load ratings %}
+
+{% block content %}
+<div class="container">
+    <h4>{{project.project_name}}</h4>
+
+    <blockquote class="blockquote text-left">
+        <div class="card-img">
+            <img src="{{project.project_image.url}}" alt="project_image" style="width:70%">
+        </div>
+        <h5>Project Details</h5>
+        <p>Name: {{project.project_name}}</p>
+        <p>Description: {{project.description}}</p>
+        <p>Github repo: {{project.github_repo}}</p>
+        <a href="{{project.url}}">Visit</a>
+        <footer class="blockquote-footer">
+            <p>Posted by: {{project.project_user}}</p>
+            <p>On: {{project.created_at}}</p>
+        </footer>
+    </blockquote>
+    <article class="text-center" style="font-size: larger;">How does {{project.project_name}} rate based on:</article>
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <p><strong>Design</strong></p>
+            <span>{% ratings project icon_height=20 icon_width=20 %}</span>
+
+        </div>
+        <div class="col-md-4">
+            <p><strong>Usability</strong></p>
+            <span>{% ratings project icon_height=20 icon_width=20 %}</span>
+
+        </div>
+        <div class="col-md-4">
+            <p><strong>Content</strong></p>
+            <span>{% ratings project icon_height=20 icon_width=20 %}</span>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

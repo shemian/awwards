@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+
+    {% if projects %}
+    {% for project in projects %}
+
+    <blockquote class="blockquote text-left mt-3">
+        <a href="{%url 'project' project_id=project.id%}"><img src="{{project.project_image.url}}" alt="project_image"
+                style="width:70%" title="Click to view more details"></a>
+        <h5>Project Details</h5>
+        <p>Name: {{project.project_name}}</p>
+        <p>Description: {{project.description}}</p>
+        <p>Github repo: {{project.github_repo}}</p>
+
+    </blockquote>
+    {% endfor %}
+    {% else %}
+    <h2 class="text-center""><i class=" icon-frown icon-4x"></i></h2>
+    <h2 class="text-center""> Found 0 projects by the name {{message}}</h2>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

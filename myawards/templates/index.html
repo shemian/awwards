@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div id="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button><br>
+
+        </div>
+    </nav>
+    <div class="container ">
+        <legend class="border-bottom mb-4 ">
+            <h2><strong>ALL PROJECTS</strong></h2>
+        </legend>
+        <legend class="border-bottom mb-4 ">
+            <h3><strong>Review and/or Rate</strong></h3>
+        </legend>
+
+        {% for project in all_projects %}
+        <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);background-color:white;margin:auto;width:145%;'
+            class="card-img text-center ml-9">
+
+            <div class="card-img">
+                <blockquote class="blockquote">
+                    <a href=" {% url 'project' project_id=project.id %}"><img src="{{project.project_image_url}}"
+                            alt="project_image" style="width:70%" class="img-responsive"
+                            title="Click to view more details"></a>
+                    <legend>
+                        <p><b>{{project.project_name}}</b></p>
+                    </legend>
+                    <p>{{project.description}}</p>
+                    <footer class="blockquote-footer">{{project.created_at}} By: {{project.project_user}}</footer>
+                </blockquote>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
