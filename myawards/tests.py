@@ -86,6 +86,7 @@ class ProjectsTest(TestCase):
         self.image.delete_post()
         projects = Post.objects.all()
         self.assertTrue(len(posts) == 0)
+        blance it up 
         
     def test_get_projects(self):
         self.project.save()
