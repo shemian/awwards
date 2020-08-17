@@ -49,7 +49,7 @@ def profile(request):
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile,data=request.POST, files=request.FILES)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
         my_projects = Projects.objects.filter(project_user=current_user)
         
     
