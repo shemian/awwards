@@ -41,7 +41,7 @@ def profile(request):
     current_user = request.user
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save() 
@@ -49,7 +49,7 @@ def profile(request):
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        p_form = ProfileUpdateForm(instance=request.user)
         my_projects = Projects.objects.filter(project_user=current_user)
         
     
@@ -85,7 +85,7 @@ def project(request, project_id):
 
 @login_required(login_url='login')
 def upload_form(request):
-    current_user = request.user.profile
+    current_user = request.user
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():

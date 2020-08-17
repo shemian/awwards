@@ -18,6 +18,8 @@ class Profile(models.Model):
         function returns informal representations of the models' objects
         """
         return f'{self.user.username} Profile'
+    
+    
 
     def save_profile(self):
         """
